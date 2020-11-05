@@ -90,12 +90,27 @@ class User extends CI_Controller
         $data ['title'] = 'Penilaian Kinerja' ;
         $data['user'] = $this->db->get_where('user',['email' => 
         $this->session->userdata('email')])->row_array();
-        $data ['user'] = $this->model('User_model')->getAllUser();
+        $data['Periode'] = $this->db->get('kinerja')->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/kinerja', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail($id)
+    
+    {
+        $data ['title'] = 'Details Penilaian Kinerja' ;
+        $data['user'] = $this->db->get_where('user',['email' => 
+        $this->session->userdata('email')])->row_array();
+        $data['Periode'] = $this->db->query('SELECT * FROM kinerja WHERE id = id');
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/detail', $data);
         $this->load->view('templates/footer');
     }
             
