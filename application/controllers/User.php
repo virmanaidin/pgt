@@ -105,7 +105,8 @@ class User extends CI_Controller
         $data ['title'] = 'Details Penilaian Kinerja' ;
         $data['user'] = $this->db->get_where('user',['email' => 
         $this->session->userdata('email')])->row_array();
-        $data['Periode'] = $this->db->query('SELECT * FROM kinerja WHERE id = id');
+        // $data['Periode'] = $this->db->query('SELECT * FROM kinerja WHERE id = id');
+        $data['Periode'] = $this->db->get_where('kinerja', ['id' => $id])->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

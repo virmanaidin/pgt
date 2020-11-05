@@ -28,7 +28,7 @@
                     <td class="h5"><?= $p['Periode']; ?> </td>
 
                     <td class="h5">
-                       <a href="<?= base_url('user/detail/'); ?> <?= $p['id']; ?>" class="badge badge-pill badge-primary">detail</a>
+                       <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
                       <a href="" class="badge badge-pill badge-success">edit</a>
                       <a href="" class="badge badge-pill badge-danger">delete</a>
                     
