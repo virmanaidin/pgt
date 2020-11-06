@@ -88,15 +88,32 @@ class User extends CI_Controller
     
     {
         $data ['title'] = 'Absensi' ;
+        
         $data['user'] = $this->db->get_where('user',['email' => 
         $this->session->userdata('email')])->row_array();
-        $data['Periode'] = $this->db->get('kinerja')->result_array();
+        // $data['absen'] = $this->db->get_where('absen', ['id' => $data['user']['id']])->result_array();
+        $data['absen'] = $this->db->get_where('absen', ['user_id' => '5'])->result_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/absensi', $data);
-        $this->load->view('templates/footer');
+        $this->form_validation->set_rules('nama','Nama','required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/absensi', $data);
+            $this->load->view('templates/footer');
+        }else{
+            $data = [
+                "nama" => $this->input->post("nama"),
+                "tanggal" => $this->input->post("tanggal"),
+                "jam" => $this->input->post("jam"),
+                "user_id" => $this->input->post("user_id")
+            ];
+
+            $this->db->insert("absen", $data);
+
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Absensi tercatat</div>');
+            redirect('user/absensi');
+        }
     }
 
     public function kinerja()
