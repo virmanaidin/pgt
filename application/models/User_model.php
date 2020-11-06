@@ -20,4 +20,16 @@ class User_model extends CI_Model
         {
             return $this->user;
         }
+
+        public function inserAbsen()
+        {
+            $data = [
+            "nama" => $this->input->post("nama"),
+            "tanggal" => $this->input->post("tanggal"),
+            "jam" => $this->input->post("jam"),
+            "user_id" => $this->input->post("user_id")
+            ];
+
+            $this->db->insert("absen", $data);
+        }
 }
