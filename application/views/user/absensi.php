@@ -10,29 +10,53 @@
               <a class=h5><?= form_error('menu','<div class="alert alert-danger" role="alert">','</div>'); ?> </a>
 
               <?= $this->session->flashdata('message'); ?>
-
-              <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPgwModal">Absen</a>
-
+              
+              <form action="<?= base_url('user/absensi'); ?>" method="post">
+                <div hidden class="modal-body">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="nama" name="nama" value="<?= $user ['name'];?>">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="tanggal" name="tanggal" value="<?=date("Y-m-d")?>">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="jam" name="jam" 
+                        value="
+                          <?php 
+                            date_default_timezone_set("Asia/Bangkok"); 
+                            echo "" . date("h:i:sa");
+                          ?>
+                      ">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="user_id" name="user_id" value="<?= $user ['id'];?>" >
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPgwModal">Absen</button>
+              </form>
                 <table class="table table-hover">
                 <thead>
                   <tr>
                     <th class="h5" scope="col">#</th>
-                    <th class="h5" scope="col">Periode</th>
-                    <th class="h5" scope="col">Aksi</th>
+                    <th class="h5" scope="col">Nama</th>
+                    <th class="h5" scope="col">Tanggal</th>
+                    <th class="h5" scope="col">Jam</th>
                 </thead>
                 <tbody>
                 <?php $i = 1;?>
-                <?php foreach ($Periode as $p ):?>
+                <?php foreach ($absen as $abs ):?>
                   <tr>
                     <th class="h5" scope="row"><?= $i;?></th>
-                    <td class="h5"><?= $p['Periode']; ?> </td>
+                    <td class="h5"><?= $abs['nama']; ?> </td>
+                    <td class="h5"><?= $abs['tanggal']; ?> </td>
+                    <td class="h5"><?= $abs['jam']; ?> </td>
 
-                    <td class="h5">
+                    <!-- <td class="h5">
                       <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
                       <a href="" class="badge badge-pill badge-success">edit</a>
                       <a href="" class="badge badge-pill badge-danger">delete</a>
                     
-                    </td>
+                    </td> -->
                   </tr>
 
                 <?php $i++;?>
@@ -45,43 +69,6 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Modal -->
-      <!-- Modal -->
-      <div class="modal fade" id="newPgwModal" tabindex="-1" aria-labelledby="newPgwModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="newPgwModalLabel">Add New Data Pegawai</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form action="<?= base_url('user/pegawai'); ?>" method="post">
-            <div class="modal-body">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="nama" placeholder="Nama">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="status" placeholder="Status">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="pangkat" placeholder="Pangkat">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="pendidikan" placeholder="Pendidikan">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="tgl_lahir" placeholder="Tanggal Lahir">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="masa_kerja" placeholder="Masa Kerja">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Add</button>
-            </form>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- <script type="text/javascript">
+    document.getElementById('tanggal').value = Date();
+  </script> -->
