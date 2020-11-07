@@ -91,9 +91,13 @@ class User extends CI_Controller
         
         $data['user'] = $this->db->get_where('user',['email' => 
         $this->session->userdata('email')])->row_array();
-        // $data['absen'] = $this->db->get_where('absen', ['id' => $data['user']['id']])->result_array();
-        $data['absen'] = $this->db->get_where('absen', ['user_id' => '5'])->result_array();
-
+        if($this->session->userdata('role_id')==2){
+            $data['absen'] = $this->db->get_where('absen', ['user_id' => $this->session->userdata('id')])->result_array();
+        }else{
+            $data['absen'] = $this->db->query('SELECT *
+                            FROM absen
+                            GROUP BY user_id')->result_array();
+        }
         $this->form_validation->set_rules('nama','Nama','required');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -115,6 +119,8 @@ class User extends CI_Controller
             redirect('user/absensi');
         }
     }
+
+    
 
     public function kinerja()
     
