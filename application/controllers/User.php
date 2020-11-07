@@ -107,10 +107,10 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         }else{
             $data = [
-                "nama" => $this->input->post("nama"),
-                "tanggal" => $this->input->post("tanggal"),
-                "jam" => $this->input->post("jam"),
-                "user_id" => $this->input->post("user_id")
+                "nama" => $this->input->post('nama'),
+                "tanggal" => $this->input->post('tanggal'),
+                "jam" => $this->input->post('jam'),
+                "user_id" => $this->input->post('user_id')
             ];
 
             $this->db->insert("absen", $data);
@@ -148,12 +148,24 @@ class User extends CI_Controller
         $this->session->userdata('email')])->row_array();
         $data['Periode'] = $this->db->get('kinerja')->result_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/kinerja', $data);
-        $this->load->view('templates/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/kinerja', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+            'Periode' => $this->input->post('Periode'),
+            'kriteria' => $this->input->post('kriteria'),
+            'penilaian' => $this->input->post('penilaian'),
+            'keterangan' => $this->input->post('keterangan')];
+
+            $this->db->insert('kinerja', $data);
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">New Menu Added</div>');
+            redirect('user/kinerja');
     }
+}
 
     public function detail($id)
     
