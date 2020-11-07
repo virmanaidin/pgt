@@ -156,10 +156,10 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $data = [
-            'Periode' => $this->input->post('Periode'),
-            'kriteria' => $this->input->post('kriteria'),
-            'penilaian' => $this->input->post('penilaian'),
-            'keterangan' => $this->input->post('keterangan')];
+            "Periode" => $this->input->post('Periode'),
+            "kriteria" => $this->input->post('kriteria'),
+            "penilaian" => $this->input->post('penilaian'),
+            "keterangan" => $this->input->post('keterangan')];
 
             $this->db->insert('kinerja', $data);
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">New Menu Added</div>');
