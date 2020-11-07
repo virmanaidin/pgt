@@ -120,7 +120,25 @@ class User extends CI_Controller
         }
     }
 
+    public function detailAbsen($id)
     
+    {
+        $data ['title'] = 'Absensi' ;
+        
+        $data['user'] = $this->db->get_where('user',['email' => 
+        $this->session->userdata('email')])->row_array();
+        $data['nama'] = $this->db->query('SELECT nama
+                            FROM absen
+                            WHERE user_id ='. $id.'
+                            GROUP BY user_id')->row_array();
+        $data['absen'] = $this->db->get_where('absen', ['user_id' => $id])->result_array();
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/absensiDetail', $data);
+        $this->load->view('templates/footer');
+    }
 
     public function kinerja()
     
