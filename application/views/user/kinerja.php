@@ -59,7 +59,7 @@
             <form action="<?= base_url('user/kinerja'); ?>" method="post">
             <div class="modal-body">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="nama" placeholder="Nama">
+                  <input type="text" class="form-control" id="menu" name="Periode" placeholder="Periode">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" id="menu" name="kriteria" placeholder="Kriteria">
