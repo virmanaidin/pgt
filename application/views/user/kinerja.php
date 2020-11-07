@@ -11,7 +11,7 @@
 
               <?= $this->session->flashdata('message'); ?>
 
-              <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPgwModal">Add New Data Pegawai</a>
+              <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newKnrjModal">Add New Data Penilaian Kinerja</a>
 
                 <table class="table table-hover">
                 <thead>
@@ -47,34 +47,28 @@
 
       <!-- Modal -->
       <!-- Modal -->
-      <div class="modal fade" id="newPgwModal" tabindex="-1" aria-labelledby="newPgwModalLabel" aria-hidden="true">
+      <div class="modal fade" id="newKnrjModal" tabindex="-1" aria-labelledby="newKnrjModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="newPgwModalLabel">Add New Data Pegawai</h5>
+              <h5 class="modal-title" id="newKnrjModalLabel">Add New Data Penilaian Kinerja</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="<?= base_url('user/pegawai'); ?>" method="post">
+            <form action="<?= base_url('user/kinerja'); ?>" method="post">
             <div class="modal-body">
                 <div class="form-group">
                   <input type="text" class="form-control" id="menu" name="nama" placeholder="Nama">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="status" placeholder="Status">
+                  <input type="text" class="form-control" id="menu" name="kriteria" placeholder="Kriteria">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="pangkat" placeholder="Pangkat">
+                  <input type="text" class="form-control" id="menu" name="penilaian" placeholder="Penilaian">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="pendidikan" placeholder="Pendidikan">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="tgl_lahir" placeholder="Tanggal Lahir">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="masa_kerja" placeholder="Masa Kerja">
+                  <input type="text" class="form-control" id="menu" name="keterangan" placeholder="Keterangan">
                 </div>
             </div>
             <div class="modal-footer">
