@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Nov 2020 pada 00.50
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Nov 07, 2020 at 08:57 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawai`
+-- Table structure for table `absen`
+--
+
+CREATE TABLE `absen` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(128) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam` time NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `absen`
+--
+
+INSERT INTO `absen` (`id`, `nama`, `tanggal`, `jam`, `user_id`) VALUES
+(3, 'Faizza Maulida', '2020-11-06', '11:06:14', 5),
+(4, 'Faizza Maulida', '2020-11-06', '11:06:37', 5),
+(5, 'Faizza Maulida', '2020-11-06', '11:10:35', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kinerja`
+--
+
+CREATE TABLE `kinerja` (
+  `id` int(11) NOT NULL,
+  `Periode` varchar(64) NOT NULL,
+  `kriteria` varchar(100) NOT NULL,
+  `penilaian` varchar(100) NOT NULL,
+  `keterangan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kinerja`
+--
+
+INSERT INTO `kinerja` (`id`, `Periode`, `kriteria`, `penilaian`, `keterangan`) VALUES
+(1, '5 November 2020', 'Gondorukem X', 'Mutu 100', 'sangat bagus'),
+(2, '6 November 2020', 'Gondorukem O', 'Mutu 100', 'bagus');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pegawai`
 --
 
 CREATE TABLE `pegawai` (
@@ -39,7 +83,7 @@ CREATE TABLE `pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pegawai`
+-- Dumping data for table `pegawai`
 --
 
 INSERT INTO `pegawai` (`id`, `nama`, `status`, `pangkat`, `pendidikan`, `tgl_lahir`, `masa_kerja`) VALUES
@@ -48,7 +92,7 @@ INSERT INTO `pegawai` (`id`, `nama`, `status`, `pangkat`, `pendidikan`, `tgl_lah
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `shift`
+-- Table structure for table `shift`
 --
 
 CREATE TABLE `shift` (
@@ -60,7 +104,7 @@ CREATE TABLE `shift` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `shift`
+-- Dumping data for table `shift`
 --
 
 INSERT INTO `shift` (`id`, `nama`, `status`, `jam`, `tgl`) VALUES
@@ -73,7 +117,7 @@ INSERT INTO `shift` (`id`, `nama`, `status`, `jam`, `tgl`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -88,7 +132,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `its_active`, `date_created`) VALUES
@@ -98,7 +142,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `its_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_acces_menu`
+-- Table structure for table `user_acces_menu`
 --
 
 CREATE TABLE `user_acces_menu` (
@@ -108,7 +152,7 @@ CREATE TABLE `user_acces_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_acces_menu`
+-- Dumping data for table `user_acces_menu`
 --
 
 INSERT INTO `user_acces_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -120,7 +164,7 @@ INSERT INTO `user_acces_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -129,7 +173,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -140,7 +184,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -149,7 +193,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -159,7 +203,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -172,7 +216,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -191,92 +235,127 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 --
 
 --
--- Indeks untuk tabel `pegawai`
+-- Indexes for table `absen`
+--
+ALTER TABLE `absen`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_id` (`user_id`);
+
+--
+-- Indexes for table `kinerja`
+--
+ALTER TABLE `kinerja`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `shift`
+-- Indexes for table `shift`
 --
 ALTER TABLE `shift`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_acces_menu`
+-- Indexes for table `user_acces_menu`
 --
 ALTER TABLE `user_acces_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_menu`
+-- Indexes for table `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user_sub_menu`
+-- Indexes for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `pegawai`
+-- AUTO_INCREMENT for table `absen`
+--
+ALTER TABLE `absen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `kinerja`
+--
+ALTER TABLE `kinerja`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `shift`
+-- AUTO_INCREMENT for table `shift`
 --
 ALTER TABLE `shift`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `user_acces_menu`
+-- AUTO_INCREMENT for table `user_acces_menu`
 --
 ALTER TABLE `user_acces_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `user_menu`
+-- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `user_sub_menu`
+-- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `absen`
+--
+ALTER TABLE `absen`
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
