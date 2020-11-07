@@ -2,9 +2,18 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800"><?= $title ." : ". $user ['name']; ?> 
+            <?php
+              if($user ['role_id'] == '2'){
+            ?>
+              <h1 class="h3 mb-4 text-gray-800"><?= $title ." : ". $user ['name']; ?> 
+            <?php
+              }else{
+            ?>
+              <h1 class="h3 mb-4 text-gray-800"><?= $title ?> 
+            <?php
+              }
+            ?>
           
-
           <div class="row">
               <div class="col-lg">
               <a class=h5><?= form_error('menu','<div class="alert alert-danger" role="alert">','</div>'); ?> </a>
@@ -32,15 +41,35 @@
                       <input type="text" class="form-control" id="user_id" name="user_id" value="<?= $user ['id'];?>" >
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPgwModal">Absen</button>
+                 <?php
+                      if($user ['role_id'] == '2'){
+                    ?>
+                      <button type="submit" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPgwModal">Absen</button>
+                    <?php
+                      }
+                    ?>
+  
               </form>
                 <table class="table table-hover">
                 <thead>
                   <tr>
                     <th class="h5" scope="col">#</th>
                     <th class="h5" scope="col">Nama</th>
-                    <th class="h5" scope="col">Tanggal</th>
-                    <th class="h5" scope="col">Jam</th>
+                     <?php
+                      if($user ['role_id'] == '2'){
+                    ?>
+                      <th class="h5" scope="col">tanggal</th>
+                      <th class="h5" scope="col">Jam</th>
+                    <?php
+                      }
+                    ?>
+                    <?php
+                      if($user ['role_id'] == '1'){
+                    ?>
+                      <th class="h5" scope="col">Aksi</th>
+                    <?php
+                      }
+                    ?>
                 </thead>
                 <tbody>
                 <?php $i = 1;?>
@@ -48,15 +77,23 @@
                   <tr>
                     <th class="h5" scope="row"><?= $i;?></th>
                     <td class="h5"><?= $abs['nama']; ?> </td>
-                    <td class="h5"><?= $abs['tanggal']; ?> </td>
-                    <td class="h5"><?= $abs['jam']; ?> </td>
-
-                    <!-- <td class="h5">
-                      <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
-                      <a href="" class="badge badge-pill badge-success">edit</a>
-                      <a href="" class="badge badge-pill badge-danger">delete</a>
-                    
-                    </td> -->
+                    <?php
+                      if($user ['role_id'] == '2'){
+                    ?>
+                      <td class="h5"><?= $abs['tanggal']; ?> </td>
+                      <td class="h5"><?= $abs['jam']; ?> </td>
+                    <?php
+                      }
+                    ?>
+                    <?php
+                      if($user ['role_id'] == '1'){
+                    ?>
+                    <td class="h5">
+                      <a href="<?= base_url('user/detailAbsen/'.$abs['user_id']); ?>" class="badge badge-pill badge-primary">detail</a>
+                    </td>
+                    <?php
+                      }
+                    ?>
                   </tr>
 
                 <?php $i++;?>
