@@ -21,8 +21,13 @@
                     <th class="h5" scope="col">Status Jabatan</th>
                     <th class="h5" scope="col">Jam</th>
                     <th class="h5" scope="col">Tanggal</th>
-                    <th class="h5" scope="col">Aksi</th>
-                    
+                    <?php
+                      if($user ['role_id'] == '1'){
+                    ?>
+                      <th class="h5" scope="col">Aksi</th>
+                    <?php
+                      }
+                    ?>
                   </tr>
                 </thead>
                 <tbody>
@@ -34,12 +39,16 @@
                     <td class="h5"><?= $n['status']; ?> </td>
                     <td class="h5"><?= $n['jam']; ?> </td>
                     <td class="h5"><?= $n['tgl']; ?> </td>
-                    
+                    <?php
+                      if($user ['role_id'] == '1'){
+                    ?>
                     <td class="h5">
                       <a href="" class="badge badge-pill badge-success">edit</a>
                       <a href="" class="badge badge-pill badge-danger">delete</a>
-                    
                     </td>
+                    <?php
+                      }
+                    ?>
                   </tr>
 
                 <?php $i++;?>
