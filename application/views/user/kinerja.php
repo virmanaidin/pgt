@@ -59,16 +59,16 @@
             <form action="<?= base_url('user/kinerja'); ?>" method="post">
             <div class="modal-body">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="Periode" placeholder="Periode">
+                  <input type="text" class="form-control" id="Periode" name="Periode" placeholder="Periode">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="kriteria" placeholder="Kriteria">
+                  <input type="text" class="form-control" id="kriteria" name="kriteria" placeholder="Kriteria">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="penilaian" placeholder="Penilaian">
+                  <input type="text" class="form-control" id="penilaian" name="penilaian" placeholder="Penilaian">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="menu" name="keterangan" placeholder="Keterangan">
+                  <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan">
                 </div>
             </div>
             <div class="modal-footer">
