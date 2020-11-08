@@ -28,6 +28,7 @@
                     <td class="h5"><?= $p['penilaian']; ?> </td>
                     <td class="h5"><?= $p['keterangan']; ?> </td>
                     
+                    <a href="<?= base_url('user/kinerja/'); ?>" class="badge badge-pill badge-success">kembali</a>
                   </tr>
 
                 <?php $i++;?>
@@ -39,3 +40,4 @@
         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
+      
