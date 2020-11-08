@@ -37,9 +37,8 @@ class Auth extends CI_Controller
         if ($user) {
             //jika usernya aktif
             if($user['its_active'] == 1){
-            // cek password
-            if($user['its_active'] == 1){   
-                // if (password_verify($password, $user['password'])) {
+            // cek password  
+                if (password_verify($password, $user['password'])) {
                     $data = [
                         'email' => $user['email'],
                         'role_id' => $user['role_id'],
