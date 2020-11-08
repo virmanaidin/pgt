@@ -55,6 +55,25 @@ class User extends CI_Controller
             
     }
 
+    public function hapuspgw($id)
+    
+    {
+        $data ['title'] = 'Hapus' ;
+        $data['user'] = $this->db->get_where('user',['email' => 
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/jadwal', $data);
+        $this->load->view('templates/footer');
+
+
+        $data['nama'] = $this->db->delete('pegawai', array('id' => $id));
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Berhasil Dihapus</div>');
+        redirect('user/pegawai');
+    } 
+
     public function jadwal()
     {
         $data ['title'] = 'Jadwal Shift';
@@ -83,6 +102,25 @@ class User extends CI_Controller
             redirect('user/jadwal');
         }
     }
+
+    public function hapusjdwl($id)
+    
+    {
+        $data ['title'] = 'Hapus' ;
+        $data['user'] = $this->db->get_where('user',['email' => 
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/jadwal', $data);
+        $this->load->view('templates/footer');
+
+
+        $data['nama'] = $this->db->delete('shift', array('id' => $id));
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Berhasil Dihapus</div>');
+        redirect('user/jadwal');
+    } 
 
     public function absensi()
     
@@ -168,6 +206,23 @@ class User extends CI_Controller
             redirect('user/kinerja');
     }
 }
+
+    public function hapusknrj($id)
+    {
+        $data ['title'] = 'Hapus' ;
+        $data['user'] = $this->db->get_where('user',['email' => 
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/kinerja', $data);
+        $this->load->view('templates/footer');
+
+        $data['Periode'] = $this->db->delete('kinerja', array('id' => $id));
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Data Berhasil Dihapus</div>');
+        redirect('user/kinerja');
+    } 
 
     public function detail($id)
     
