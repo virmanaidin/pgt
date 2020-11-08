@@ -10,9 +10,13 @@
               <a class=h5><?= form_error('menu','<div class="alert alert-danger" role="alert">','</div>'); ?> </a>
 
               <?= $this->session->flashdata('message'); ?>
-
+              <?php
+                      if($user ['role_id'] == '1'){
+              ?>
               <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newJdwlModal">Add New Jadwal Shift</a>
-
+              <?php
+                      }
+              ?>
                 <table class="table table-hover">
                 <thead>
                   <tr>
@@ -44,7 +48,7 @@
                     ?>
                     <td class="h5">
                       <a href="" class="badge badge-pill badge-success">edit</a>
-                      <a href="" class="badge badge-pill badge-danger">delete</a>
+                      <a href="<?= base_url('user/hapusjdwl/'.$n['id']); ?>" class="badge badge-pill badge-danger">delete</a>
                     </td>
                     <?php
                       }
