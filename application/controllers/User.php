@@ -143,11 +143,13 @@ class User extends CI_Controller
     public function kinerja()
     
     {
+        var_dump($this->input->post('Periode'));
         $data ['title'] = 'Penilaian Kinerja' ;
         $data['user'] = $this->db->get_where('user',['email' => 
         $this->session->userdata('email')])->row_array();
         $data['Periode'] = $this->db->get('kinerja')->result_array();
 
+        $this->form_validation->set_rules('Periode','Periode','required');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -159,8 +161,9 @@ class User extends CI_Controller
             'Periode' => $this->input->post('Periode'),
             'kriteria' => $this->input->post('kriteria'),
             'penilaian' => $this->input->post('penilaian'),
-            'keterangan' => $this->input->post('keterangan')];
-
+            'keterangan' => $this->input->post('keterangan')
+        ];
+            
             $this->db->insert('kinerja', $data);
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">New Menu Added</div>');
             redirect('user/kinerja');
