@@ -32,7 +32,7 @@
                     <th class="h5" scope="row"><?= $i;?></th>
                     <td class="h5"><?= $n['nama']; ?> </td>
                     <td class="h5"><?= $n['status']; ?> </td>
-                    <td class="h5"><?= $n['pangkat']; ?> </td>ss
+                    <td class="h5"><?= $n['pangkat']; ?> </td>
                     <td class="h5"><?= $n['pendidikan']; ?> </td>
                     <td class="h5"><?= $n['tgl_lahir']; ?> </td>
                     <td class="h5"><?= $n['masa_kerja']; ?> </td>

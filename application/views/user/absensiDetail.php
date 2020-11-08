@@ -22,8 +22,8 @@
                       <input type="text" class="form-control" id="jam" name="jam" 
                         value="
                           <?php 
-                            date_default_timezone_set("Asia/Bangkok"); 
-                            echo "" . date("h:i:sa");
+                            date_default_timezone_set("Asia/Jakarta"); 
+                            echo "" . date("H:i:sa");
                           ?>
                       ">
                     </div>
