@@ -10,15 +10,20 @@
               <a class=h5><?= form_error('menu','<div class="alert alert-danger" role="alert">','</div>'); ?> </a>
 
               <?= $this->session->flashdata('message'); ?>
-
+              <?php
+              if($user ['role_id'] == '1'){
+              ?>
               <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newKnrjModal">Add New Data Penilaian Kinerja</a>
-
+              <?php
+                      }
+              ?>    
                 <table class="table table-hover">
                 <thead>
                   <tr>
                     <th class="h5" scope="col">#</th>
-                    <th class="h5" scope="col">Periode</th>
+                    <th class="h5" scope="col">Periode</th>                    
                     <th class="h5" scope="col">Aksi</th>
+
                 </thead>
                 <tbody>
                 <?php $i = 1;?>
@@ -27,14 +32,28 @@
                     <th class="h5" scope="row"><?= $i;?></th>
                     <td class="h5"><?= $p['Periode']; ?> </td>
 
+                    <?php
+                    if($user ['role_id'] == '1'){
+                    ?>
                     <td class="h5">
-                       <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
+                      <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
                       <a href="" class="badge badge-pill badge-success">edit</a>
-                      <a href="" class="badge badge-pill badge-danger">delete</a>
-                    
+                      <a href="<?= base_url('user/hapusknrj/'.$p['id']); ?>" class="badge badge-pill badge-danger">delete</a>
                     </td>
+                    <?php
+                    }
+                    ?> 
+                    <?php
+                    if($user ['role_id'] == '2'){
+                    ?>
+                    <td class = "h5">
+                      <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
+                    </td>
+                     <?php
+                    }
+                    ?> 
                   </tr>
-
+             
                 <?php $i++;?>
                 <?php endforeach;?>
                 </tbody>
