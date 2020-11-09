@@ -37,7 +37,7 @@
                     ?>
                     <td class="h5">
                       <a href="<?= base_url('user/detail/'.$p['id']); ?>" class="badge badge-pill badge-primary">detail</a>
-                      <a href="" class="badge badge-pill badge-success">edit</a>
+                      <a href="" class="badge badge-pill badge-success tampilModalUbah"  data-toggle="modal" data-target="#editKnrjModal<?= $p['id'];?>" data-id="<?= $p['id'];?>">edit</a>
                       <a href="<?= base_url('user/hapusknrj/'.$p['id']); ?>" class="badge badge-pill badge-danger">delete</a>
                     </td>
                     <?php
@@ -64,7 +64,6 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Modal -->
       <!-- Modal -->
       <div class="modal fade" id="newKnrjModal" tabindex="-1" aria-labelledby="newKnrjModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -98,3 +97,41 @@
           </div>
         </div>
       </div>
+      <!-- End of Modal -->
+
+      <!-- Modal Edit -->
+      <?php foreach ($Periode as $p ):?>
+      <div class="modal fade" id="editKnrjModal<?= $p['id'];?>" tabindex="-1" aria-labelledby="editKnrjModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newJdwlModalLabel">Add New Jadwal Shift</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="<?= base_url('user/kinerjaUpdate'.$p['id']); ?>" method="post">
+            <div class="modal-body">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="nama" placeholder="Nama" value="<?=$p['Periode']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="status" placeholder="Status Jabatan" value="<?=$p['kriteria']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="jam" placeholder="Jam" value="<?=$p['penilaian']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="tgl" placeholder="Tanggal" value="<?=$p['keterangan']; ?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal -->
+      <?php endforeach;?>

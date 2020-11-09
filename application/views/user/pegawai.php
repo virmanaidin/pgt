@@ -45,7 +45,7 @@
                     if($user ['role_id'] == '1'){
                     ?>
                     <td class="h5">
-                      <a href="" class="badge badge-pill badge-success">edit</a>
+                      <a href="" class="badge badge-pill badge-success tampilModalUbah"  data-toggle="modal" data-target="#editPgwModal<?= $n['id'];?>" data-id="<?= $n['id'];?>">edit</a>
                       <a href="<?= base_url('user/hapuspgw/'.$n['id']); ?>" class="badge badge-pill badge-danger">delete</a>
                     </td>
                     <?php
@@ -103,3 +103,46 @@
           </div>
         </div>
       </div>
+
+      <!-- Modal Edit -->
+      <?php foreach ($nama as $n ):?>
+      <div class="modal fade" id="editPgwModal<?= $n['id'];?>" tabindex="-1" aria-labelledby="editPgwModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newJdwlModalLabel">Add New Jadwal Shift</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="<?= base_url('user/kinerjaUpdate'.$n['id']); ?>" method="post">
+            <div class="modal-body">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="nama" placeholder="Nama" value="<?=$n['nama']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="status" placeholder="Status Jabatan" value="<?=$n['status']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="jam" placeholder="Jam" value="<?=$n['pendidikan']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="tgl" placeholder="Tanggal" value="<?=$n['pangkat']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="tgl" placeholder="Tanggal" value="<?=$n['tgl_lahir']; ?>">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="menu" name="tgl" placeholder="Tanggal" value="<?=$n['masa_kerja']; ?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal -->
+      <?php endforeach;?>
