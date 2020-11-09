@@ -13,7 +13,7 @@
               <?php
                       if($user ['role_id'] == '1'){
               ?>
-              <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newJdwlModal">Add New Jadwal Shift</a>
+              <a href="" class="btn btn-primary mb-3 tombolTambahData" data-toggle="modal" data-target="#newJdwlModal">Add New Jadwal Shift</a>
               <?php
                       }
               ?>
@@ -47,7 +47,7 @@
                       if($user ['role_id'] == '1'){
                     ?>
                     <td class="h5">
-                      <a href="" class="badge badge-pill badge-success">edit</a>
+                      <a href="<?= base_url('user/editjdwl/'.$n['id']); ?>" class="badge badge-pill badge-success tampilModalUbah"  data-toggle="modal" data-target="#newJdwlModal" data-id="<?= $n['id'];?>">edit</a>
                       <a href="<?= base_url('user/hapusjdwl/'.$n['id']); ?>" class="badge badge-pill badge-danger">delete</a>
                     </td>
                     <?php
