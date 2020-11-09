@@ -239,5 +239,9 @@ class User extends CI_Controller
         $this->load->view('user/detail', $data);
         $this->load->view('templates/footer');
     }
+
+    public function getubah(){
+        echo $_POST['id'];
+    }
             
 }
